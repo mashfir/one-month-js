@@ -2,10 +2,10 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="description" content="Happy Hour App - How about a drink!?">
-		<meta name="keywords" content="happy hour, drink, beers">
+		<meta name="description" content="Birthday generator">
+		<meta name="keywords" content="birthday, month, day, generator">
 
-		<title>Happy Hour</title>
+		<title>Birthday Generator</title>
 		
 		<!-- external CSS link -->
 		<link rel="stylesheet" href="css/normalize.css">
@@ -13,33 +13,31 @@
 
 		<script>
 		
-			// Our List of Bars
-			var bars = [
-				'Siggys',
-				'Blind Tiger',
-				'Zum Schneider',
-				'One Month',
-				'Home Sweet Home',
-				'Union Pool'
+			var months = [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December'
 			];
 
-			// Our List of Friends
-			var friends = [
-				'Mattan',
-				'Chris',
-				'Lee',
-				'Casey',
-				'that girl you forgot to text back',
-				'Kayne West'
-			];
+            // Generate arrays from 1 to 29
+            var days = Array.from(new Array(29), (x, i) => i + 1);
 
-			var randomNumber = Math.floor(Math.random()*bars.length);
-            document.write(randomNumber);
+			var randomNumber1 = Math.floor(Math.random()*months.length);
+			var randomNumber2 = Math.floor(Math.random()*days.length);
 			
-			var barname = bars[randomNumber];
-			var friendname = friends[randomNumber];
+			var month = months[randomNumber1];
+			var day = days[randomNumber2];
 
-			document.write("How about you go to <strong>" + barname + "</strong> with <strong>" + friendname + "</strong>?");
+            document.write("You were born on <strong>" + month + " " + day + "</strong>!");
 		
 		</script>
 	</head>
