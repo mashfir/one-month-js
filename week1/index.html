@@ -25,10 +25,18 @@
 
             var username = prompt("Hello, who are you?");
             var car = new Array("BMW", "Saab", "Maserati");
-            console.log(car);
 
             if(username==="Chris") {
                 document.write("<h1>Hello " + username + " you won a " + car[0] + "!</h1>");
+                var bmw = document.createElement("img");
+                bmw.setAttribute("src", "bmw.jpeg");
+                document.body.appendChild(bmw);
+            }
+            else if(username==="M") {
+                document.write("<h1>Hello " + username + " you won a " + car[1] + "!</h1>");
+                var saab = document.createElement("img");
+                saab.setAttribute("src", "saab.jpeg");
+                document.body.appendChild(saab);
             }
             else {
                 document.write("<h1>Hello " + username + "!");
@@ -39,7 +47,7 @@
     </head>
 
     <body>
-        <img src="" alt="Oprah">
+        <img src="oprah.jpeg" alt="Oprah">
     </body>
 
 </html>
