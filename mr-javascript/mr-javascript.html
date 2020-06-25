@@ -11,10 +11,17 @@
 
         <script type="text/javascript">
 
-            var h1 = document.querySelector("h1");
-            h1.innerHTML = "I'm alive!";
-            console.log(h1);
+            var a = document.querySelector("a");
+            a.addEventListener('click', function() {
 
+                alert("We're inside the listener");
+
+                var h1 = document.querySelector("h1");
+                h1.innerHTML = "I'm alive!";
+                console.log(h1);
+
+            });
+                        
         </script>
     </body>
 </html>
