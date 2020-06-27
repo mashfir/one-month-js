@@ -31,14 +31,19 @@ GiphyAJAXCall.addEventListener('load', function(e) {
 
     // your callback events go here 
     var data = e.target.response;
-    console.log(data);
+    pushToDOM(data);
 
 });
 
 /* 3. show GIFs */
 function pushToDOM(input) {
 
+    var response = JSON.parse(input);
+
+    var imageUrl = response.data[0].images.fixed_height.url;
+    console.log(imageUrl);
+
     var container = document.querySelector(".js-container");
-    container.innerHTML = input;
+    container.innerHTML = "<img src=\"" + imageUrl + "\">";
 
 }
