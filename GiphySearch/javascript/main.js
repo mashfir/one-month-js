@@ -40,10 +40,16 @@ function pushToDOM(input) {
 
     var response = JSON.parse(input);
 
-    var imageUrl = response.data[0].images.fixed_height.url;
-    console.log(imageUrl);
+    var imageUrls = response.data;
+    // var imageUrl = response.data[0].images.fixed_height.url;
 
-    var container = document.querySelector(".js-container");
-    container.innerHTML = "<img src=\"" + imageUrl + "\">";
+    imageUrls.forEach(function(image) {
+
+        var src = image.images.fixed_height.url;
+
+        var container = document.querySelector(".js-container");
+        container.innerHTML += "<img src=\"" + src + "\" class=\"container-image\">";
+
+    });
 
 }
