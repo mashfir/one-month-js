@@ -7,17 +7,27 @@
     <body>
 
         <h1>I'm Mr. JavaScript</h1>
-        <a href="#">Hey JavaScript, how ya feeling?</a>
+        <a href="#" class="hello">Reset</a>
+        <a href="#" class="howareyou">Hey JavaScript, how ya feeling?</a>
 
         <script type="text/javascript">
 
-            var a = document.querySelector("a");
-            a.addEventListener('click', function() {
+            var a = document.querySelector(".howareyou");
 
-                alert("We're inside the listener");
+            a.addEventListener('click', function() {
 
                 var h1 = document.querySelector("h1");
                 h1.innerHTML = "I'm alive!";
+                console.log(h1);
+
+            });
+
+            var b = document.querySelector(".hello");
+
+            b.addEventListener('click', function() {
+
+                var h1 = document.querySelector("h1");
+                h1.innerHTML = "I'm Mr. JavaScript";
                 console.log(h1);
 
             });
