@@ -3,7 +3,7 @@
 document.querySelector(".js-go").addEventListener('click', function() {
 
     var input = document.querySelector('input').value;
-    pushToDOM(input);
+    get_gifs(input);
 
 });
 
@@ -13,27 +13,31 @@ document.querySelector(".js-userinput").addEventListener('keyup', function(e) {
 
     // 'Enter' has keyCode 13
     if(e.which === 13) {
-        pushToDOM(input);
+        get_gifs(input);
     }
 
 });
 
 /* 2. API handling */
 
-var url = 'http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=NgCTfkDrio3ySlBzktPUx6L67J2bRJeL';
+function get_gifs(query) {
 
-// AJAX Request
-var GiphyAJAXCall = new XMLHttpRequest();
-GiphyAJAXCall.open('GET', url);
-GiphyAJAXCall.send();
+    var url = 'http://api.giphy.com/v1/gifs/search?q=' + query + '&api_key=NgCTfkDrio3ySlBzktPUx6L67J2bRJeL';
 
-GiphyAJAXCall.addEventListener('load', function(e) {
+    // AJAX Request
+    var GiphyAJAXCall = new XMLHttpRequest();
+    GiphyAJAXCall.open('GET', url);
+    GiphyAJAXCall.send();
 
-    // your callback events go here 
-    var data = e.target.response;
-    pushToDOM(data);
+    GiphyAJAXCall.addEventListener('load', function(e) {
 
-});
+        // your callback events go here 
+        var data = e.target.response;
+        pushToDOM(data);
+
+    });
+
+}
 
 /* 3. show GIFs */
 function pushToDOM(input) {
@@ -41,13 +45,14 @@ function pushToDOM(input) {
     var response = JSON.parse(input);
 
     var imageUrls = response.data;
-    // var imageUrl = response.data[0].images.fixed_height.url;
+    var container = document.querySelector(".js-container");
+
+    container.innerHTML = '';
 
     imageUrls.forEach(function(image) {
 
         var src = image.images.fixed_height.url;
 
-        var container = document.querySelector(".js-container");
         container.innerHTML += "<img src=\"" + src + "\" class=\"container-image\">";
 
     });
