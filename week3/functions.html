@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Functions</title>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            
+            //basic functions
+            function catSound() {
+                console.log('nya nya');
+            }
+
+            catSound();
+
+            //anonymous function
+            var dogSound = function() {
+                console.log('wan wan')
+            };
+
+            dogSound();
+
+            //object
+            var flight = {
+                airline: "American Airlines",
+                num: 235,
+                departure: {
+                    time: '2016-10-01',
+                    airport: 'JFK'
+                }
+            }
+
+            console.log(flight.airline);
+            console.log(flight.departure.airport);
+
+        </script>
+    </body>
+</html>
+
