@@ -1,6 +1,25 @@
 /* Search */
 
+var UI = {};
 
+UI.submitClick = function(){
+    document.querySelector('.js-submit').addEventListener('click', function(e){
+        var input = document.querySelector('.js-search').value;
+        SoundCloudAPI.getTrack(input);
+    });
+};
+
+UI.enterPress = function(){
+    document.querySelector('.js-search').addEventListener('keyup', function(e){
+        var input = document.querySelector('.js-search').value;
+        if(e.which === 13){
+            SoundCloudAPI.getTrack(input);
+        }
+    });
+};
+
+UI.submitClick();
+UI.enterPress();
 
 /* Query Soundcloud API */
 
@@ -18,17 +37,17 @@ SoundCloudAPI.getTrack = function(inputValue) {
     SC.get('/tracks', {
         q: inputValue
     }).then(function(tracks) {
-        console.log(tracks);
         SoundCloudAPI.renderTracks(tracks);
     });
 }
 
 SoundCloudAPI.init();
-SoundCloudAPI.getTrack("Rilo Kiley");
 
 /* Display cards */
 
 SoundCloudAPI.renderTracks = function(tracks) {
+    var searchResults = document.querySelector('.js-search-results');
+    searchResults.innerHTML = '';
 
     tracks.forEach(function(track) {
 
@@ -79,6 +98,7 @@ SoundCloudAPI.renderTracks = function(tracks) {
             SoundCloudAPI.getEmbed(track.permalink_url);
         });
 
+        searchResults.innerHTML
         searchResults.appendChild(card);
 
     });
@@ -88,7 +108,8 @@ SoundCloudAPI.renderTracks = function(tracks) {
 
 SoundCloudAPI.getEmbed = function(url){
     SC.oEmbed(url, {
-        auto_play: true
+        maxheight: 166,
+        auto_play: false
     }).then(function(embed){
 
         var sidebar = document.querySelector('.js-playlist');
@@ -98,9 +119,6 @@ SoundCloudAPI.getEmbed = function(url){
         box.innerHTML = embed.html;
         sidebar.insertBefore(box, sidebar.firstChild);
         localStorage.setItem('key', sidebar.innerHTML);
-
-        alert(sidebar.innerHTML);
-
     });
 }
 
