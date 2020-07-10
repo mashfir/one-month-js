@@ -92,10 +92,18 @@ SoundCloudAPI.getEmbed = function(url){
     }).then(function(embed){
 
         var sidebar = document.querySelector('.js-playlist');
-
         var box = document.createElement('div');
-        box.innerHTML = embed.html;
 
+        // insert embed object and save sidebar div to localStorage
+        box.innerHTML = embed.html;
         sidebar.insertBefore(box, sidebar.firstChild);
+        localStorage.setItem('key', sidebar.innerHTML);
+
+        alert(sidebar.innerHTML);
+
     });
 }
+
+// load in existing playlist
+var sidebar = document.querySelector('.js-playlist');
+sidebar.innerHTML = localStorage.getItem('key');
