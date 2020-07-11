@@ -1,8 +1,40 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Arrays</title>
     </head>
     <body>
+    <script type='text/javascript'>
+        // .push - add new elements to array
+        var sports = ['soccer', 'baseball'];
+        var total = sports.push('football', 'swimming');
+
+        console.log(sports);
+        console.log(total);
+
+        // .pop - remove and return last element
+        var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+        console.log(myFish);
+
+        var popped = myFish.pop();
+
+        console.log(myFish);
+        console.log(popped);
+
+        // .shift - removes and return first element
+        var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+        console.log('myFish before: ' + myFish);
+
+        var shifted = myFish.shift();
+
+        console.log('myFish after: ' + myFish);
+        console.log('Removed this element: ' + shifted);
+
+        // .reverse - reverses order of elements
+        var myArray = ['one', 'two', 'three'];
+        myArray.reverse();
+
+        console.log(myArray);
+    </script>
     </body>
 </html>
