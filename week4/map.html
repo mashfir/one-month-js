@@ -13,6 +13,29 @@
     <body>
         <script type='text/javascript'>
 
+            // .forEach -- exeecutes once per array element
+            var cities = ['NYC', 'Paris', 'Berlin'];
+            console.log(cities);
+
+            cities.forEach(function(city) {
+                console.log(city);
+            });
+
+            // map - loops through data, creates new array
+            var numbers = [1, 4, 9];
+
+            var doubles = numbers.map(function(num) {
+                return num * 2;
+            });
+
+            console.log(doubles);
+
+            var people = [{name:'Chris', city:'NYC'}, {name:'Mattan', city:'JC'}];
+
+            var names = people.map(function(person){
+                return person.name;
+            });
+
         </script>
     </body>
 </html>
