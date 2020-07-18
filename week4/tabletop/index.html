@@ -9,6 +9,8 @@
         </style>
     </head>
     <body>
+        <h1 class='header'>Site Name</h1>
+        <p class='bodytext'>Description of the site</p>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
         <script type='text/javascript'>    
             var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1AAlLPtwoWbRHyjDbnjdIG4ZjleFjB5ftAWJug9Q7vQg/edit?usp=sharing';
@@ -20,8 +22,13 @@
             }
 
             function showInfo(data, tabletop) {
-                alert('Successfully processed!')
-                console.log(data);
+                var header = document.querySelector('.header');
+                var bodyText = document.querySelector('.bodytext');
+
+                data.forEach(function(row) {
+                    header.innerHTML = row.Name;
+                    bodyText.innerHTML = row.Category;
+                });
             }
 
             window.addEventListener('DOMContentLoaded', init);
